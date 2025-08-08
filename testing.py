@@ -18,12 +18,13 @@ my_servo2 = Servo(pwm=servo_pwm2, min_us=min_us, max_us=max_us, dead_zone_us=dea
 
 while True:
 
+# Left = 1340
+# Right = 1630
+
     my_servo.set_duty(1340)
     my_servo2.set_duty(1340)
-    print("Turning Left")
     time.sleep(2)
 
     my_servo.stop()
     my_servo2.stop()
-    print("End")
-    time.sleep(2)
+    time.sleep(5)

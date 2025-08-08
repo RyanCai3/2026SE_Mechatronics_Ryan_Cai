@@ -30,7 +30,27 @@ while True:
 
     my_servo.set_duty(500)
     my_servo2.set_duty(2500)
-    print("Going Backward")
+    print("Going Backwards")
+    time.sleep(2)
+
+    my_servo.set_duty(1500)
+    my_servo2.set_duty(1500)
+    print("Stop")
+    time.sleep(2)
+
+    my_servo.set_duty(1340)
+    my_servo2.set_duty(1340)
+    print("Turning Left")
+    time.sleep(2)
+
+    my_servo.set_duty(1500)
+    my_servo2.set_duty(1500)
+    print("Stop")
+    time.sleep(2)
+
+    my_servo.set_duty(1630)
+    my_servo2.set_duty(1630)
+    print("Turning Right")
     time.sleep(2)
 
     my_servo.stop()
