@@ -17,20 +17,10 @@ my_servo = Servo(pwm=servo_pwm, min_us=min_us, max_us=max_us, dead_zone_us=dead_
 my_servo2 = Servo(pwm=servo_pwm2, min_us=min_us, max_us=max_us, dead_zone_us=dead_zone_us, freq=freq)
 
 while True:
-    # manually set the servo duty time
-    my_servo.set_duty(2500)
-    my_servo2.set_duty(500)
-    print("Going Forward")
-    time.sleep(2)
 
-    my_servo.set_duty(1500)
-    my_servo2.set_duty(1500)
-    print("Stop")
-    time.sleep(2)
-
-    my_servo.set_duty(500)
-    my_servo2.set_duty(2500)
-    print("Going Backward")
+    my_servo.set_duty(1340)
+    my_servo2.set_duty(1340)
+    print("Turning Left")
     time.sleep(2)
 
     my_servo.stop()
