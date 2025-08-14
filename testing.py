@@ -16,15 +16,57 @@ dead_zone_us = 1500
 my_servo = Servo(pwm=servo_pwm, min_us=min_us, max_us=max_us, dead_zone_us=dead_zone_us, freq=freq)
 my_servo2 = Servo(pwm=servo_pwm2, min_us=min_us, max_us=max_us, dead_zone_us=dead_zone_us, freq=freq)
 
-while True:
+# Defining movement functions
+def stop():
+    my_servo.set_duty(1500)
+    my_servo2.set_duty(1500)
 
-# Left = 1340
-# Right = 1630
+def forward():
+    my_servo.set_duty(2000)
+    my_servo2.set_duty(1000)
 
+def backward():
+    my_servo.set_duty(1000)
+    my_servo2.set_duty(2000)
+
+def turn_left():
     my_servo.set_duty(1340)
     my_servo2.set_duty(1340)
+
+def turn_right():
+    my_servo.set_duty(1635)
+    my_servo2.set_duty(1635)
+
+# unit testing
+while True:
+    forward()
+    print("Moving Forward")
     time.sleep(2)
 
-    my_servo.stop()
-    my_servo2.stop()
-    time.sleep(5)
+    stop()
+    print("Stopped")
+    time.sleep(2)
+
+    backward()
+    print("Moving Backward")
+    time.sleep(2)
+
+    stop()
+    print("Stopped")
+    time.sleep(2)
+
+    turn_left()
+    print("Turning Left")
+    time.sleep(2)
+
+    stop()
+    print("Stopped")
+    time.sleep(2)
+
+    turn_right()
+    print("Turning Right")
+    time.sleep(2)
+
+    stop()
+    print("Stopped")
+    time.sleep(2)
