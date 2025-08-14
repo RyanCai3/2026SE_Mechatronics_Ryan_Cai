@@ -41,7 +41,21 @@ def turn_right():
     my_servo.set_duty(1635)
     my_servo2.set_duty(1635)
 
+clearance = True
+
 # Main Running
-while True:
+while clearance == True:
     forward()
     print(f"{range_a.distance_mm}, {range_b.distance_mm}")
+    if range_a.distance_mm < 200:
+        print("Obstacle Detected!")
+        clearance = False
+
+if range_b.distance.mm < 50:
+    print("Obstacle On Right, Turning Left")
+    turn_left()
+    clearance = True
+else:
+    print("Turning Right")
+    turn_right()
+    clearance = True
