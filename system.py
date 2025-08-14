@@ -17,8 +17,8 @@ dead_zone_us = 1500
 # Creating Objects
 my_servo = Servo(servo_pwm, min_us, max_us, dead_zone_us, freq)
 my_servo2 = Servo(servo_pwm2, min_us, max_us, dead_zone_us, freq)
-range_a = PiicoDev_Ultrasonic(id=[0, 0, 0, 0])
-range_b = PiicoDev_Ultrasonic(id=[0, 0, 1, 0]) 
+f_sensor = PiicoDev_Ultrasonic(id=[0, 0, 0, 0])
+r_sensor = PiicoDev_Ultrasonic(id=[0, 0, 1, 0]) 
 
 # Defining Movement Functions
 def stop():
@@ -46,12 +46,12 @@ clearance = True
 # Main Running
 while clearance == True:
     forward()
-    print(f"{range_a.distance_mm}, {range_b.distance_mm}")
-    if range_a.distance_mm < 200:
+    print(f"{f_sensor.distance_mm}, {r_sensor.distance_mm}")
+    if f_sensor.distance_mm < 200:
         print("Obstacle Detected!")
         clearance = False
 
-if range_b.distance.mm < 50:
+if r_sensor.distance.mm < 50:
     print("Obstacle On Right, Turning Left")
     turn_left()
     clearance = True
