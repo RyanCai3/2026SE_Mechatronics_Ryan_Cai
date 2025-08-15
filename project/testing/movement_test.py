@@ -30,12 +30,12 @@ def backward():
     my_servo2.set_duty(2000)
 
 def turn_left():
-    my_servo.set_duty(1340)
-    my_servo2.set_duty(1340)
+    my_servo.set_duty(1335)
+    my_servo2.set_duty(1335)
 
 def turn_right():
-    my_servo.set_duty(1635)
-    my_servo2.set_duty(1635)
+    my_servo.set_duty(1650)
+    my_servo2.set_duty(1650)
 
 # unit testing
 while True:
