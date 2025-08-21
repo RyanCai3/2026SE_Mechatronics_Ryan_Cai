@@ -1,7 +1,7 @@
 from servo import Servo
 from machine import Pin, PWM
 from PiicoDev_Unified import sleep_ms
-from controller import MovementSubsystem
+from subsystems import MovementSubsystem
 
 servo_pwm = PWM(Pin(16))
 servo_pwm2 = PWM(Pin(20))

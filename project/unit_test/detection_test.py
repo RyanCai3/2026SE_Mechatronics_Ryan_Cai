@@ -1,5 +1,5 @@
 from PiicoDev_Unified import sleep_ms
-from controller import DetectionSubsystem
+from subsystems import DetectionSubsystem
 from PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
 
 f_sensor = PiicoDev_Ultrasonic(id=[0,0,0,0])
