@@ -15,13 +15,19 @@ class RobotSystem:
         self.controller = RobotController(self.movement, self.detection)
     
     def run(self):
-        while True:
-            self.controller.update()
-            sleep_ms(100)
+        # Main loop
+        try:
+            while True:
+                self.controller.update()
+                print("State:", self.controller.state)
+                sleep_ms(100)
+        except KeyboardInterrupt:
+            print("Robot run interrupted. Stopping robot...")
+            self.movement.stop()
 
 # Define the wheels
-wheel_1 = Servo(PWM(Pin(16)), 500, 2500, 1500, 500)
-wheel_2 = Servo(PWM(Pin(20)), 500, 2500, 1500, 500)
+wheel_1 = Servo(PWM(Pin(16)), 500, 2500, 1500, 50)
+wheel_2 = Servo(PWM(Pin(20)), 500, 2500, 1500, 50)
 
 #Define the sensors
 f_sensor = PiicoDev_Ultrasonic(id=[0,0,0,0])
