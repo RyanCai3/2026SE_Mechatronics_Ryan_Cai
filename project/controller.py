@@ -5,39 +5,54 @@ class RobotController:
         self.state = "DRIVING"
 
     def driving_state(self):
-        # Set driving state
         self.state = "DRIVING"
         self.__movement.move_forward()
 
+    def turning_left_state(self):
+        self.state = "TURNING LEFT"
+        self.__movement.turn_left()
+
+    def turning_right_state(self):
+        self.state = "TURNING RIGHT"
+        self.__movement.turn_right()
+
+    def avoid_state_1(self):
+        # Turn right to avoid obstacle
+        self.state = "AVOIDING OBSTACLES"
+        self.__movement.stop()
+        self.__movement.turn_right()
+
+    def avoid_state_2(self):
+        # Turn left if both sensors detect obstacles
+        self.state = "AVOIDING OBSTACLES"
+        self.__movement.stop()
+        self.__movement.turn_left()
+
     def update(self):
-        # Read sensors
         f_obstacle = self.__detection.sensor_1_obstacle_detected()
         r_obstacle = self.__detection.sensor_2_obstacle_detected()
 
-        # State machine logic
-        if self.state == "DRIVING":
+        if self.state == "IDLE":
+            self.__movement.stop()
+            print("State:", self.state)
+
+        elif self.state == "DRIVING":
+            self.__movement.move_forward()
+            
             if f_obstacle and r_obstacle:
-                # Turn left if there are obstacles front and right
-                self.state = "AVOIDING OBSTACLES"
-                self.__movement.turn_left()
+                self.avoid_state_2()
                 print("State:", self.state)
+            
             elif f_obstacle:
-                # Turn right if there are only obstacles in front
-                self.state = "AVOIDING OBSTACLES"
-                self.__movement.turn_right()
+                self.avoid_state_1()
                 print("State:", self.state)
-            else:
-                # Move forward if there are no obstacles
-                self.__movement.move_forward()
-                print("State: DRIVING")
-        
+
         elif self.state == "AVOIDING OBSTACLES":
-            # Check if obstacles are cleared
-            if f_obstacle and r_obstacle:
-                self.__movement.turn_left()
-            elif f_obstacle:
-                self.__movement.turn_right()
-            else:
-                self.state = "DRIVING"
-                self.__movement.move_forward()
+            # Check if front obstacle cleared
+            if not f_obstacle:
+                self.driving_state()
                 print("State:", self.state)
+
+        elif self.state == "REVERSING":
+            self.__movement.move_backward()
+            print("State:", self.state)
