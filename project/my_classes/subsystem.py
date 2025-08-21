@@ -1,9 +1,3 @@
-from servo import Servo
-from machine import Pin, PWM
-from PID_Controller import PIDControl
-from PiicoDev_Unified import sleep_ms
-from PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
-
 class MovementSubsystem:
     def __init__(self, wheel_1, wheel_2):
         self.__wheel_1 = wheel_1 # First wheel
@@ -16,7 +10,7 @@ class MovementSubsystem:
 
     def move_forward(self):
         # Moves forward
-        self.__wheel_1.set_duty(2000)
+        self.__wheel_1.set_duty(1980)
         self.__wheel_2.set_duty(1000)
 
     def move_backward(self):
@@ -26,13 +20,13 @@ class MovementSubsystem:
 
     def turn_left(self):
         # Turns left
-        self.__wheel_1.set_duty(1000)
-        self.__wheel_2.set_duty(1000)
+        self.__wheel_1.set_duty(1400)
+        self.__wheel_2.set_duty(1400)
     
     def turn_right(self):
         # Turns right
-        self.__wheel_1.set_duty(2000)
-        self.__wheel_2.set_duty(2000)
+        self.__wheel_1.set_duty(1600)
+        self.__wheel_2.set_duty(1600)
 
 class DetectionSubsystem:
     def __init__(self, sensor_1, sensor_2, threshold_1_mm, threshold_2_mm):
@@ -43,11 +37,11 @@ class DetectionSubsystem:
     
     def get_distance_sensor_1(self):
         # Return distance (mm) for sensor 1
-        return self.__sensor_1.distance_mm
+        return self.__sensor_1.distance_mm()
     
     def get_distance_sensor_2(self):
         # Return distance (mm) for sensor 2
-        return self.__sensor_2.distance_mm
+        return self.__sensor_2.distance_mm()
 
     def sensor_1_obstacle_detected(self):
         # Check if a sensor 1 detects an obstacle
