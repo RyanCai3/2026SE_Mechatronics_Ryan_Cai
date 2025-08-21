@@ -26,13 +26,13 @@ class MovementSubsystem:
 
     def turn_left(self):
         # Turns left
-        self.__wheel_1.set_duty(1335)
-        self.__wheel_2.set_duty(1335)
+        self.__wheel_1.set_duty(1000)
+        self.__wheel_2.set_duty(1000)
     
     def turn_right(self):
         # Turns right
-        self.__wheel_1.set_duty(1630)
-        self.__wheel_2.set_duty(1630)
+        self.__wheel_1.set_duty(2000)
+        self.__wheel_2.set_duty(2000)
 
 class DetectionSubsystem:
     def __init__(self, sensor_1, sensor_2, threshold_1_mm, threshold_2_mm):
