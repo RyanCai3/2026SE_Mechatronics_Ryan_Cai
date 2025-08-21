@@ -6,7 +6,7 @@ from PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
 from subsystem import MovementSubsystem, DetectionSubsystem
 
 class RobotSystem:
-    def __init__(self, wheel_1, wheel_2, f_sensor, r_sensor, threshold_1=100, threshold_2=40):
+    def __init__(self, wheel_1, wheel_2, f_sensor, r_sensor, threshold_1=100, threshold_2=100):
         # Set up movement
         self.movement = MovementSubsystem(wheel_1, wheel_2)
         # Set up detection

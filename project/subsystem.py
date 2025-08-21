@@ -20,13 +20,13 @@ class MovementSubsystem:
 
     def turn_left(self):
         # Turns left
-        self.__wheel_1.set_duty(1400)
-        self.__wheel_2.set_duty(1400)
+        self.__wheel_1.set_duty(1000)
+        self.__wheel_2.set_duty(1000)
     
     def turn_right(self):
         # Turns right
-        self.__wheel_1.set_duty(1600)
-        self.__wheel_2.set_duty(1600)
+        self.__wheel_1.set_duty(2000)
+        self.__wheel_2.set_duty(2000)
 
 class DetectionSubsystem:
     def __init__(self, sensor_1, sensor_2, threshold_1_mm, threshold_2_mm):
@@ -35,21 +35,21 @@ class DetectionSubsystem:
         self.__threshold_1 = threshold_1_mm # Obstacle threshold for sensor 1
         self.__threshold_2 = threshold_2_mm # Obstacle threshold for sensor 2
     
-    def get_distance_sensor_1(self):
+    def distance_sensor_1(self):
         # Return distance (mm) for sensor 1
-        return self.__sensor_1.distance_mm()
-    
-    def get_distance_sensor_2(self):
+        return self.__sensor_1.distance_mm
+
+    def distance_sensor_2(self):
         # Return distance (mm) for sensor 2
-        return self.__sensor_2.distance_mm()
+        return self.__sensor_2.distance_mm
 
     def sensor_1_obstacle_detected(self):
         # Check if a sensor 1 detects an obstacle
-        return self.get_distance_sensor_1() < self.__threshold_1
+        return self.distance_sensor_1() < self.__threshold_1
     
     def sensor_2_obstacle_detected(self):
         # Check if a sensor 2 detects an obstacle
-        return self.get_distance_sensor_2() < self.__threshold_2
+        return self.distance_sensor_2() < self.__threshold_2
     
     def any_obstacle(self):
         # Return "true" if either sensor detects an obstacle
