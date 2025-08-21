@@ -3,7 +3,7 @@ from machine import Pin, PWM
 from PiicoDev_Unified import sleep_ms
 from controller import RobotController
 from PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
-from subsystems import MovementSubsystem, DetectionSubsystem
+from subsystem import MovementSubsystem, DetectionSubsystem
 
 class RobotSystem:
     def __init__(self, wheel_1, wheel_2, f_sensor, r_sensor, threshold_1=100, threshold_2=40):
